@@ -1,0 +1,17 @@
+{
+  "name": "lesson2",
+  "version": "1.0.0",
+  "description": "lesson2",
+  "main": "index.js",
+  "scripts": {},
+  "author": "dr",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.15",
+    "is-even-check-new": "^1.0.1"
+  },
+  "dependencies": {
+    "isoddy": "^1.0.1"
+  }
+}
