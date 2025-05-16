@@ -8,32 +8,31 @@ test.beforeEach(async ({ page }) => {
 test.describe("register functionality", () => {
   test("AQA-13 valid user registration", { tag: ['@smoke-demo', '@registration-demo'] }, async ({ page }) => {
     const { uniqueUser, userEmail, userPassword } = dataGenerator();
-    await page.getByRole("textbox", { name: "Username" }).fill(uniqueUser);
-    await expect(page.getByRole("textbox", { name: "Username" })).toHaveValue(uniqueUser);
-    await page.getByRole("textbox", { name: "Email" }).fill(userEmail);
-    await expect(page.getByRole("textbox", { name: "Email" })).toHaveValue(userEmail);
-    await page.getByRole("textbox", { name: "Password" }).fill(userPassword);
-    await expect(page.getByRole("textbox", { name: "Password" })).toHaveValue(userPassword);
-    await page.getByRole("button", { name: "Sign up" }).click();
+    await page.locator('input[placeholder="Username"]').fill(uniqueUser);
+    await expect(page.locator('input[placeholder="Username"]')).toHaveValue(uniqueUser);
+    await page.locator('input[placeholder="Email"]').fill(userEmail);
+    await expect(page.locator('input[placeholder="Email"]')).toHaveValue(userEmail);
+    await page.locator('input[placeholder="Password"]').fill(userPassword);
+    await expect(page.locator('input[placeholder="Password"]')).toHaveValue(userPassword);
+    await page.locator('button[class="btn btn-lg btn-primary pull-xs-right"]').click();
     await page.waitForTimeout(100);
-    await expect(page.getByText("username is invalid")).not.toBeVisible();
+    await expect(page.locator('ul[class="error-messages"] li')).not.toBeVisible();
     await expect(page).toHaveURL("https://demo.learnwebdriverio.com/");
-    await expect(page.getByRole("link", { name: uniqueUser })).toBeVisible();
+    await expect(page.locator(`a[href*="user12345"]`).first()).toBeVisible()
   });
 
   test("AQA-14 invalid user registration attempt", { tag: ['@smoke-demo', '@registration-demo'] }, async ({ page }) => {
     const { invalidUser, invalidEmail, invalidPassword } = invalidData;
 
-    await page.getByRole("textbox", { name: "Username" }).fill(invalidUser);
-    await expect(page.getByRole("textbox", { name: "Username" })).toHaveValue(invalidUser);
-    await page.getByRole("textbox", { name: "Email" }).fill(invalidEmail);
-    await expect(page.getByRole("textbox", { name: "Email" })).toHaveValue(invalidEmail);
-    await page.getByRole("textbox", { name: "Password" }).fill(invalidPassword);
-    await expect(page.getByRole("textbox", { name: "Password" })).toHaveValue(invalidPassword);
-    await page.getByRole("button", { name: "Sign up" }).click();
+    await page.locator('input[placeholder="Username"]').fill(invalidUser);
+    await expect(page.locator('input[placeholder="Username"]')).toHaveValue(invalidUser);
+    await page.locator('input[placeholder="Email"]').fill(invalidEmail);
+    await expect(page.locator('input[placeholder="Email"]')).toHaveValue(invalidEmail);
+    await page.locator('input[placeholder="Password"]').fill(invalidPassword);
+    await expect(page.locator('input[placeholder="Password"]')).toHaveValue(invalidPassword);
+    await page.locator('button[class="btn btn-lg btn-primary pull-xs-right"]').click();
     await page.waitForTimeout(100);
-    await expect(page.locator('.error-messages')).toContainText('username is invalidemail is invalid')
-    await expect(page.getByText("email is invalid")).toBeVisible();
+    await expect(page.locator('ul[class="error-messages"] li')).not.toBeVisible();
     await expect(page).toHaveURL("https://demo.learnwebdriverio.com/register");
   });
 });

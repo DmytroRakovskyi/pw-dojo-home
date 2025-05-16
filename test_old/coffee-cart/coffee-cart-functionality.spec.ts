@@ -5,10 +5,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("AQA-6 empty cart can be opened", { tag: ["@smoke-coffee"] }, async ({ page }) => {
-  await page.getByRole("link", { name: "Cart page" }).click();
+  await expect(page.locator('a[href="/cart"]')).toHaveText('cart (0)')
+  await page.locator('a[href="/cart"]').click();
   await expect(page).toHaveURL("https://coffee-cart.app/cart");
-  await expect(page).toHaveTitle("Coffee cart");
-  await expect(page.getByRole("paragraph")).toHaveText("No coffee, go add some.");
+   await expect(page).toHaveURL("https://coffee-cart.app/cart");
+  await expect(page.locator('head title')).toHaveText("Coffee cart");
+  await expect(page.locator('#app p')).toHaveText("No coffee, go add some.");
 });
 
 test("AQA-7 adding one element to the cart", { tag: ["@smoke-coffee"] }, async ({ page }) => {

@@ -8,29 +8,29 @@ test.beforeEach(async ({ page }) => {
 test.describe("login functionality", () => {
 
   test("AQA-15 valid user login", { tag: ["@smoke-demo", "@login-demo"] }, async ({page}) => {
-    const { validUser, validEmail, validPassword } = validData;
+    const {validEmail, validPassword } = validData;
 
-    await page.getByRole("textbox", { name: "Email" }).fill(validEmail);
-    await expect(page.getByRole("textbox", { name: "Email" })).toHaveValue(validEmail);
-    await page.getByRole("textbox", { name: "Password" }).fill(validPassword);
-    await expect(page.getByRole("textbox", { name: "Password" })).toHaveValue(validPassword);
-    await page.getByRole("button", { name: "Sign in" }).click();
+    await page.locator('input[placeholder="Email"]').fill(validEmail);
+    await expect(page.locator('input[placeholder="Email"]')).toHaveValue(validEmail);
+    await page.locator('input[placeholder="Password"]').fill(validPassword);
+    await expect(page.locator('input[placeholder="Password"]')).toHaveValue(validPassword);
+    await page.locator('button[class="btn btn-lg btn-primary pull-xs-right"]').click();
     await page.waitForTimeout(100);
-    await expect(page.getByText("username is invalid")).not.toBeVisible();
+    await expect(page.locator('ul[class="error-messages"] li')).not.toBeVisible();
     await expect(page).toHaveURL("https://demo.learnwebdriverio.com/");
-    await expect(page.getByTestId("site-nav")).toContainText("user12345");
+    await expect(page.locator(`a[href*="user12345"]`).first()).toContainText("user12345");
   });
 
   test("AQA-16 invalid user login attempt", { tag: ["@smoke-demo", "@login-demo"] }, async ({ page }) => {
-    const { invalidUser, invalidEmail, invalidPassword } = invalidData;
+    const {invalidEmail, invalidPassword } = invalidData;
 
-    await page.getByRole("textbox", { name: "Email" }).fill(invalidEmail);
-    await expect(page.getByRole("textbox", { name: "Email" })).toHaveValue(invalidEmail);
-    await page.getByRole("textbox", { name: "Password" }).fill(invalidPassword);
-    await expect(page.getByRole("textbox", { name: "Password" })).toHaveValue(invalidPassword);
-    await page.getByRole("button", { name: "Sign in" }).click();
+    await page.locator('input[placeholder="Email"]').fill(invalidEmail);
+    await expect(page.locator('input[placeholder="Email"]')).toHaveValue(invalidEmail);
+    await page.locator('input[placeholder="Password"]').fill(invalidPassword);
+    await expect(page.locator('input[placeholder="Password"]')).toHaveValue(invalidPassword);
+    await page.locator('button[class="btn btn-lg btn-primary pull-xs-right"]').click();
     await page.waitForTimeout(100);
-    await expect(page.getByText("email or password is invalid")).toBeVisible();
+    await expect(page.locator('ul[class="error-messages"] li')).toBeVisible();
     await expect(page).toHaveURL("https://demo.learnwebdriverio.com/login");
   });
 
