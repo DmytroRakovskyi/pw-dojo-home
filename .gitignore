@@ -41,3 +41,4 @@ logs/
 
 # Playwright specific generated files
 trace.zip
+tsconfig.json

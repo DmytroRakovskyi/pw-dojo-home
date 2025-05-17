@@ -14,10 +14,4 @@ const invalidData = {
   invalidPassword: "1",
 };
 
-const validData = {
-  validUser: "user12345",
-  validEmail: "user12345@test.com",
-  validPassword: "12345",
-};
-
-export { dataGenerator, invalidData, validData };
+export { dataGenerator, invalidData };

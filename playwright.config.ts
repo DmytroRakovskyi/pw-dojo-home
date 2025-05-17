@@ -15,14 +15,14 @@ export default defineConfig({
   testDir: './test',
   /* Run tests in files in parallel */
   fullyParallel: false,
+  //timeout: 10 * 1000 or 10_000 //10 sec
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 3 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
    reporter: [
-    ['list'],
-    ['html', { outputFolder: 'playwright-report', open: 'always' }]
+    ['list']
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
