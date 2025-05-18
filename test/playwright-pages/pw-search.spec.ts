@@ -15,6 +15,12 @@ await page.goto("https://playwright.dev/");
 
 */
 
+const selectorsPw = {
+'search':'.navbarSearchContainer_Bca1',
+'searchModal': '.DocSearch-Modal',
+'searchInput': '.DocSearch-Input',
+}
+
 test.beforeEach(async ({ page }) => {
   await page.goto("https://playwright.dev/");
 });
@@ -27,17 +33,17 @@ test('AQA-12, search should be visible, clickable, fillable', {tag: '@smoke-pw'}
 
 
 
-await expect(page.locator('.navbarSearchContainer_Bca1')).toBeVisible();
+await expect(page.locator(selectorsPw.search)).toBeVisible();
 await page.keyboard.press('Control+K');
-await expect(page.locator('.DocSearch-Modal')).toBeVisible();
+await expect(page.locator(selectorsPw.searchModal)).toBeVisible();
 await page.keyboard.press('Control+K');
-await expect(page.locator('.DocSearch-Modal')).toBeVisible({visible: false});
-await page.locator('.navbarSearchContainer_Bca1').click()
-await expect(page.locator('.DocSearch-Modal')).toBeVisible();
-await page.locator('.DocSearch-Input').fill('Peter')
-await expect(page.locator('.DocSearch-Input')).toHaveValue('Peter')
-await page.locator('.DocSearch-Input').clear()
-await expect(page.locator('.DocSearch-Input')).toBeEmpty()
+await expect(page.locator(selectorsPw.searchModal)).toBeVisible({visible: false});
+await page.locator(selectorsPw.search).click()
+await expect(page.locator(selectorsPw.searchModal)).toBeVisible();
+await page.locator(selectorsPw.searchInput).fill('Peter')
+await expect(page.locator(selectorsPw.searchInput)).toHaveValue('Peter')
+await page.locator(selectorsPw.searchInput).clear()
+await expect(page.locator(selectorsPw.searchInput)).toBeEmpty()
 
 })
 });
