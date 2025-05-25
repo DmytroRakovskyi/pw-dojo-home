@@ -44,4 +44,5 @@ trace.zip
 tsconfig.json
 
 # Old tests
-test-old/
+test_old/
+test_old
