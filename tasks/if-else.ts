@@ -23,7 +23,7 @@ export const isEvenOrOdd = (param: number): string => {
 - Якщо год > 18: "Доброго вечора!"
 */
 
-export const currentHour: number = new Date().getHours();
+
 export function greetings(param: number): string {
   if (param < 0 || typeof param !== 'number') {
     return 'Друже, ти з космосу? Час може бути лише позитивним числовим значенням';
@@ -33,6 +33,7 @@ export function greetings(param: number): string {
     return 'Доброго дня!';
   } else return 'Доброго вечора!';
 }
+// export const currentHour: number = new Date().getHours();
 
 // console.log(`Task 2 output: ${greetings(currentHour)}`);
 
