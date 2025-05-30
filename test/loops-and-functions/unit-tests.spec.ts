@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { isEvenOrOdd, greetings, voteAge } from '../../tasks/if-else';
+import { isEvenOrOdd, greetings, voteAge } from '../../tasks/conditional-functions';
 
 test.describe('function isEvenOrOdd', { tag: '@unit' }, () => {
   test('is even', async () => {
