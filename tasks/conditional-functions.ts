@@ -25,7 +25,7 @@ export const isEvenOrOdd = (param: number): string => {
 
 
 export function greetings(param: number): string {
-  if (param < 0 || typeof param !== 'number') {
+  if (param < 0) {
     return 'Друже, ти з космосу? Час може бути лише позитивним числовим значенням';
   } else if (param < 12) {
     return 'Доброго ранку!';
@@ -66,7 +66,7 @@ export function gradeCheck(grade: number): string {
 - Інакше: "Ви ще не можете голосувати."
 */
 export const voteAge = (age: number = 0): string => {
-  if (typeof age === 'number' && age >= 18 && age <= 101) {
+  if (age >= 18 && age <= 101) {
     return 'Ви можете голосувати.';
   } else {
     return 'Ви ще не можете голосувати.';
