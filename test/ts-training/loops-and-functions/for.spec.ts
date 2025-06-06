@@ -8,13 +8,33 @@ async function clickOnLocator(page: Page, orderCount: number, selector: string) 
     await page.locator(selector).nth(i).click();
   }
 }
+const cups = (page:Page)  => page.locator(".cup-body:not(.disabled-hover)");
 
-async function orderAllCoffee(page: Page) {
-  const cups: Locator = page.locator(".cup-body");
-  for (let i = 1; i <= 10; i++) {
-    await cups.click();
-  }
+async function orderAllCoffeeViaForOF(page: Page) {
+  const allCups = await cups(page).all()
+ for ( let el of allCups) {
+  await el.click() 
+ }
+
 }
+
+async function orderAllCoffeeViaForEach(page: Page) {
+  const allCups = await cups(page).all()
+ allCups.forEach(async (element, index, coffeArr) => {
+
+console.log(index);
+console.log(coffeArr);
+await element.click()
+ });
+ }
+
+
+
+test("test2222", async ({ page }) => {
+  await page.goto(baseUrl);
+  // await orderAllCoffee(page);
+ await orderAllCoffeeViaForOF(page)
+});
 
 test("test1", async ({ page }) => {
   await page.goto(baseUrl);
