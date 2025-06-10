@@ -4,6 +4,9 @@ import { isInputArray } from '../../../code_training/arrays/isArray';
 import { cloneArray } from '../../../code_training/arrays/cloneArray';
 import { firstArrayElements } from '../../../code_training/arrays/firstArrayElements';
 import { lastArrayElements } from '../../../code_training/arrays/lastArrayElements';
+import { joinArr } from '../../../code_training/arrays/joinArr';
+import { sortArrayAsc } from '../../../code_training/arrays/sortArray';
+import {dashesEven} from '../../../code_training/arrays/dashesEven'
 
 test.describe('function isEvenOrOdd', { tag: '@unit' }, () => {
   test('is even', async () => {
@@ -78,10 +81,28 @@ test('default first element', async () => {
 test('last 2 elements returnal', async () => {
   const testArray: Array<any> = [false, '1', 2, 3, 4];
   const result: any = lastArrayElements(testArray, 2);
-  expect(result).toEqual([4,3]);
+  expect(result).toEqual([4, 3]);
 });
 test('default last element', async () => {
   const testArray: Array<any> = [1, '1', false];
   const result: any = lastArrayElements(testArray);
   expect(result).toEqual([false]);
+});
+
+test('array is joined', async () => {
+  const testArray: Array<any> = [1, '1', false];
+  const result: any = joinArr(testArray, '-');
+  expect(result).toEqual('1-1-false');
+});
+
+test('dashes appears after even', async() => {
+  const testArr: Array<string> = ['13455566621'];
+  const result: string = dashesEven(testArr);
+  expect(result).toEqual('1345556-6-6-21')
+})
+
+test('array sorted is ascending', async () => {
+  const testArray: Array<any> = [99, -1, 19, 0, -9, 9];
+  const result: Array<number> = sortArrayAsc(testArray);
+  expect(result).toEqual([-9, -1, 0, 9, 19, 99]);
 });
