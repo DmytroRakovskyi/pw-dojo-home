@@ -1,8 +1,8 @@
 import { test, expect, Page } from '@playwright/test';
-import { dataGenerator, invalidData } from '../../../utils/utils';
-import {
-RegistrationPage, baseUrl
-} from '../../../pages/registration-page';
+import { dataGenerator, invalidData } from '../../../utils/data-generator';
+import { goTo } from '../../../utils/navigation';
+import { baseUrl } from '../../../utils/constants';
+import { RegistrationPage } from '../../../pages/registration-page';
 
 const { uniqueUser, userEmail, userPassword } = dataGenerator();
 const { invalidUser, invalidEmail, invalidPassword } = invalidData;
@@ -10,7 +10,7 @@ const responsePromise = (page: Page, response: string) => page.waitForResponse(r
 
 test.beforeEach(async ({ page }) => {
   const registerPage = new RegistrationPage(page);
-  await registerPage.goTo(baseUrl, '/register');
+  await goTo(page, baseUrl, '/register');
 });
 
 test.describe('register functionality', () => {
@@ -18,7 +18,7 @@ test.describe('register functionality', () => {
     'AQA-13 valid user registration',
     { tag: ['@smoke-wb', '@registration-wb'] },
     async ({ page }) => {
-        const registerPage = new RegistrationPage(page);
+      const registerPage = new RegistrationPage(page);
       const respPromise: any = responsePromise(
         page,
         'https://conduit-api.learnwebdriverio.com/api/users',
@@ -36,7 +36,7 @@ test.describe('register functionality', () => {
     'AQA-14 invalid user registration attempt',
     { tag: ['@smoke-wb', '@registration-wb'] },
     async ({ page }) => {
-              const registerPage = new RegistrationPage(page);
+      const registerPage = new RegistrationPage(page);
       const respPromise: any = responsePromise(
         page,
         'https://conduit-api.learnwebdriverio.com/api/users',

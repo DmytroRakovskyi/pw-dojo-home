@@ -1,10 +1,13 @@
 import { test, expect, chromium, Locator, BrowserContext } from '@playwright/test';
-import { invalidData, dataGenerator } from '../../../utils/utils';
+import { invalidData, dataGenerator } from '../../../utils/data-generator';
+import { goTo } from '../../../utils/navigation';
+import { baseUrl } from '../../../utils/constants';
+
 import { RegistrationPage } from '../../../pages/registration-page';
+import { LoginPage } from '../../../pages/login-page';
 
 let registeredUser: any;
 const { invalidEmail, invalidPassword } = invalidData;
-const baseUrl = 'https://demo.learnwebdriverio.com';
 registeredUser = dataGenerator();
 const { uniqueUser, userEmail, userPassword } = registeredUser;
 
@@ -14,8 +17,8 @@ test.beforeAll(async () => {
   const context: BrowserContext = await browser.newContext();
   const page = await context.newPage();
   const registerPage = new RegistrationPage(page);
-  await page.goto(`${baseUrl}/register`);
-  await registerPage.userRegistration(uniqueUser, userEmail, userPassword)
+  await goTo(page, baseUrl, '/register');
+  await registerPage.userRegistration(uniqueUser, userEmail, userPassword);
   await expect(page).toHaveURL(baseUrl);
   await browser.close();
 });
@@ -26,19 +29,19 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('login functionality', () => {
   test('AQA-15 valid user login', { tag: ['@smoke-wb', '@login'] }, async ({ page }) => {
+    const loginPage = new LoginPage(page);
 
-    const registerPage = new RegistrationPage(page);
-    registerPage.userLogin(userEmail, userPassword);
-    await expect(registerPage.errorPanel).not.toBeVisible();
-    await expect(registerPage.userProfileButton).toContainText(registeredUser.uniqueUser);
-    await expect(page).toHaveURL(baseUrl)
+    loginPage.userLogin(userEmail, userPassword);
+    await expect(loginPage.errorPanel).not.toBeVisible();
+    await expect(loginPage.userProfileButton).toContainText(registeredUser.uniqueUser);
+    await expect(page).toHaveURL(baseUrl);
   });
 
   test('AQA-16 invalid user login attempt', { tag: ['@smoke-wb', '@login'] }, async ({ page }) => {
-    const registerPage = new RegistrationPage(page);
-    registerPage.userLogin(invalidEmail, invalidPassword)
-    await expect(registerPage.errorPanel).toBeVisible();
-    await expect(registerPage.userProfileButton).not.toBeVisible();
-    await expect(page).toHaveURL(`${baseUrl}/login`)
+    const loginPage = new LoginPage(page);
+    loginPage.userLogin(invalidEmail, invalidPassword);
+    await expect(loginPage.errorPanel).toBeVisible();
+    await expect(loginPage.userProfileButton).not.toBeVisible();
+    await expect(page).toHaveURL(`${baseUrl}/login`);
   });
 });
