@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "description": "lesson2",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "prettier --write"
+  },
   "author": "dr",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^9.8.0",
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.15",
-    "is-even-check-new": "^1.0.1"
+    "husky": "^9.1.7",
+    "is-even-check-new": "^1.0.1",
+    "lint-staged": "^16.1.2"
   },
   "dependencies": {
     "isoddy": "^1.0.1"
