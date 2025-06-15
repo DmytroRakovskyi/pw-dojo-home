@@ -48,3 +48,7 @@ test_old/
 test_old
 # code_training/
 # code_training
+
+# Prettier 
+.prettierrc
+.prettierignore
