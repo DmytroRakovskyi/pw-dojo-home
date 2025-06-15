@@ -15,17 +15,15 @@ export class MainPage {
     this.tagList = page.locator('.sidebar .tag-list');
     this.articlePreview = page.locator('.article-preview');
     this.articleFavorite = page.locator('button[data-qa-type*="fav"]');
-
   }
- async getByTagBefore(tagName: string) {
-     return this.page.locator(`a[href="/tag/${tagName}"]`);
+  async getByTagBefore(tagName: string) {
+    return this.page.locator(`a[href="/tag/${tagName}"]`);
   }
   async getByTagAfter(text: string) {
-     return this.page.locator(`//li[span[text()='${text}']]`);
+    return this.page.locator(`//li[span[text()='${text}']]`);
   }
 
-
   async addFirstToFavorite() {
-    await this.articleFavorite.first().click()
+    await this.articleFavorite.first().click();
   }
 }

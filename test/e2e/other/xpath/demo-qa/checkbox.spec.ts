@@ -1,5 +1,5 @@
-import { expect, Locator, test } from "@playwright/test";
-const baseUrl = "https://demoqa.com";
+import { expect, Locator, test } from '@playwright/test';
+const baseUrl = 'https://demoqa.com';
 
 /** 
  Test objective: to verify checkbox elements via xpath
@@ -7,13 +7,13 @@ const baseUrl = "https://demoqa.com";
  Test results: elements can be interacted
  */
 
-test.describe("Xpath 002, checkbox functionality", { tag: ["@smoke", "@checkbox"] }, () => {
+test.describe('Xpath 002, checkbox functionality', { tag: ['@smoke', '@checkbox'] }, () => {
   test.beforeEach(async ({ page }) => {
     await page.route(/.*ads.*/i, (route) => route.abort());
     await page.goto(`${baseUrl}/checkbox`);
   });
 
-  test(`demoqa-2, checkbox functionality`, { tag: ["@smoke", "@checkbox"] }, async ({ page }) => {
+  test(`demoqa-2, checkbox functionality`, { tag: ['@smoke', '@checkbox'] }, async ({ page }) => {
     //headers
     const checkBoxHeader = page.locator("//h1[@class='text-center']");
 
@@ -30,8 +30,12 @@ test.describe("Xpath 002, checkbox functionality", { tag: ["@smoke", "@checkbox"
     const collapseButton = page.locator("//button[contains(@aria-label, 'Collapse')]");
     const homeButton: Locator = page.locator("//*[contains(text(), 'Home')]/../../button");
     const desktopButton: Locator = page.locator("//*[contains(text(), 'Desktop')]/../../button");
-    const documentsButton: Locator = page.locator("//*[contains(text(), 'Documents')]/../../button");
-    const downloadsButton: Locator = page.locator("//*[contains(text(), 'Downloads')]/../../button");
+    const documentsButton: Locator = page.locator(
+      "//*[contains(text(), 'Documents')]/../../button",
+    );
+    const downloadsButton: Locator = page.locator(
+      "//*[contains(text(), 'Downloads')]/../../button",
+    );
 
     //Steps
     await expandButton.click();
@@ -45,7 +49,7 @@ test.describe("Xpath 002, checkbox functionality", { tag: ["@smoke", "@checkbox"
     await collapseButton.click();
     await home.click();
     await expect(result).toContainText(
-      "homedesktopnotescommandsdocumentsworkspacereactangularveuofficepublicprivateclassifiedgeneraldownloadswordFileexcelFile"
+      'homedesktopnotescommandsdocumentsworkspacereactangularveuofficepublicprivateclassifiedgeneraldownloadswordFileexcelFile',
     );
   });
 });

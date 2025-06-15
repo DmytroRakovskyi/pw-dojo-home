@@ -1,21 +1,21 @@
-import { test, expect } from "@playwright/test";
-import article from "../../../testdata/article.json";
-import { faker } from "@faker-js/faker";
+import { test, expect } from '@playwright/test';
+import article from '../../../../../utils/testdata/article.json';
+import { faker } from '@faker-js/faker';
 /**
  Test objective: to verify elements presense types via xpath
 
  Test results: elements can be selected on UI
  */
 
-const baseUrl = "https://demoqa.com";
+const baseUrl = 'https://demoqa.com';
 
-test.describe("Xpath 001, textbox functionality", { tag: ["@smoke", "@test-box"] }, () => {
+test.describe('Xpath 001, textbox functionality', { tag: ['@smoke', '@test-box'] }, () => {
   test.beforeEach(async ({ page }) => {
     await page.route(/.*ads.*/i, (route) => route.abort());
     await page.goto(`${baseUrl}/text-box`);
   });
 
-  test(`demoqa-1, test-box functionality`, { tag: ["@smoke", "@test-box"] }, async ({ page }) => {
+  test(`demoqa-1, test-box functionality`, { tag: ['@smoke', '@test-box'] }, async ({ page }) => {
     //headers
     const textBoxHeader = page.locator('//h1[contains(text(), "Text")]');
 
@@ -42,7 +42,6 @@ test.describe("Xpath 001, textbox functionality", { tag: ["@smoke", "@test-box"]
     //buttons
     const submitButton = page.locator("//button[text()='Submit']");
 
-
     //Steps
     await expect(textBoxHeader).toBeVisible();
     await expect(fullNameLabel).toBeVisible();
@@ -58,8 +57,5 @@ test.describe("Xpath 001, textbox functionality", { tag: ["@smoke", "@test-box"]
     await expect(paragraphEmail).toBeVisible();
     await expect(paragraphCurrentAdreess).toBeVisible();
     await expect(paragraphPermanentAdreess).toBeVisible();
-
-
-
   });
 });

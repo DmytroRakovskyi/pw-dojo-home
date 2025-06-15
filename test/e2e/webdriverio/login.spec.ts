@@ -1,10 +1,10 @@
 import { test, expect, chromium, Locator, BrowserContext } from '@playwright/test';
 import { invalidData, dataGenerator } from '../../../utils/data-generator';
 import { goTo } from '../../../utils/navigation';
-import { baseUrl } from '../../../utils/constants';
+import { baseUrlWebDriver } from '../../../utils/constants';
 
-import { RegistrationPage } from '../../../pages/registration-page';
-import { LoginPage } from '../../../pages/login-page';
+import { RegistrationPage } from '../../../pages/webdriverio/RegisrationPage';
+import { LoginPage } from '../../../pages/webdriverio/LoginPage';
 
 let registeredUser: any;
 const { invalidEmail, invalidPassword } = invalidData;
@@ -17,14 +17,14 @@ test.beforeAll(async () => {
   const context: BrowserContext = await browser.newContext();
   const page = await context.newPage();
   const registerPage = new RegistrationPage(page);
-  await goTo(page, baseUrl, '/register');
+  await goTo(page, baseUrlWebDriver, '/register');
   await registerPage.userRegistration(uniqueUser, userEmail, userPassword);
-  await expect(page).toHaveURL(baseUrl);
+  await expect(page).toHaveURL(baseUrlWebDriver);
   await browser.close();
 });
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(`${baseUrl}/login`);
+  await page.goto(`${baseUrlWebDriver}/login`);
 });
 
 test.describe('login functionality', () => {
@@ -34,7 +34,7 @@ test.describe('login functionality', () => {
     loginPage.userLogin(userEmail, userPassword);
     await expect(loginPage.errorPanel).not.toBeVisible();
     await expect(loginPage.userProfileButton).toContainText(registeredUser.uniqueUser);
-    await expect(page).toHaveURL(baseUrl);
+    await expect(page).toHaveURL(baseUrlWebDriver);
   });
 
   test('AQA-16 invalid user login attempt', { tag: ['@smoke-wb', '@login'] }, async ({ page }) => {
@@ -42,6 +42,6 @@ test.describe('login functionality', () => {
     loginPage.userLogin(invalidEmail, invalidPassword);
     await expect(loginPage.errorPanel).toBeVisible();
     await expect(loginPage.userProfileButton).not.toBeVisible();
-    await expect(page).toHaveURL(`${baseUrl}/login`);
+    await expect(page).toHaveURL(`${baseUrlWebDriver}/login`);
   });
 });

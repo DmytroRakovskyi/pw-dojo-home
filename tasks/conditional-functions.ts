@@ -23,7 +23,6 @@ export const isEvenOrOdd = (param: number): string => {
 - Якщо год > 18: "Доброго вечора!"
 */
 
-
 export function greetings(param: number): string {
   if (param < 0) {
     return 'Друже, ти з космосу? Час може бути лише позитивним числовим значенням';

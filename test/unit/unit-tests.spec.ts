@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { isEvenOrOdd, greetings, voteAge } from '../../../tasks/conditional-functions';
-import { isInputArray } from '../../../code_training/arrays/isArray';
-import { cloneArray } from '../../../code_training/arrays/cloneArray';
-import { firstArrayElements } from '../../../code_training/arrays/firstArrayElements';
-import { lastArrayElements } from '../../../code_training/arrays/lastArrayElements';
-import { joinArr } from '../../../code_training/arrays/joinArr';
-import { sortArrayAsc } from '../../../code_training/arrays/sortArray';
-import {dashesEven} from '../../../code_training/arrays/dashesEven'
+import { isEvenOrOdd, greetings, voteAge } from '../../tasks/conditional-functions';
+import { isInputArray } from '../../code_training/arrays/isArray';
+import { cloneArray } from '../../code_training/arrays/cloneArray';
+import { firstArrayElements } from '../../code_training/arrays/firstArrayElements';
+import { lastArrayElements } from '../../code_training/arrays/lastArrayElements';
+import { joinArr } from '../../code_training/arrays/joinArr';
+import { sortArrayAsc } from '../../code_training/arrays/sortArray';
+import { dashesEven } from '../../code_training/arrays/dashesEven';
 
 test.describe('function isEvenOrOdd', { tag: '@unit' }, () => {
   test('is even', async () => {
@@ -95,11 +95,11 @@ test('array is joined', async () => {
   expect(result).toEqual('1-1-false');
 });
 
-test('dashes appears after even', async() => {
+test('dashes appears after even', async () => {
   const testArr: Array<string> = ['13455566621'];
   const result: string = dashesEven(testArr);
-  expect(result).toEqual('1345556-6-6-21')
-})
+  expect(result).toEqual('1345556-6-6-21');
+});
 
 test('array sorted is ascending', async () => {
   const testArray: Array<any> = [99, -1, 19, 0, -9, 9];

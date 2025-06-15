@@ -1,8 +1,8 @@
 import { test, expect, Page } from '@playwright/test';
 import { dataGenerator, invalidData } from '../../../utils/data-generator';
 import { goTo } from '../../../utils/navigation';
-import { baseUrl } from '../../../utils/constants';
-import { RegistrationPage } from '../../../pages/registration-page';
+import { baseUrlWebDriver } from '../../../utils/constants';
+import { RegistrationPage } from '../../../pages/webdriverio/RegisrationPage';
 
 const { uniqueUser, userEmail, userPassword } = dataGenerator();
 const { invalidUser, invalidEmail, invalidPassword } = invalidData;
@@ -10,7 +10,7 @@ const responsePromise = (page: Page, response: string) => page.waitForResponse(r
 
 test.beforeEach(async ({ page }) => {
   const registerPage = new RegistrationPage(page);
-  await goTo(page, baseUrl, '/register');
+  await goTo(page, baseUrlWebDriver, '/register');
 });
 
 test.describe('register functionality', () => {
@@ -26,7 +26,7 @@ test.describe('register functionality', () => {
       await registerPage.userRegistration(uniqueUser, userEmail, userPassword);
       const response = await respPromise;
       await expect(registerPage.errorPanel).not.toBeVisible();
-      await expect(page).toHaveURL(baseUrl);
+      await expect(page).toHaveURL(baseUrlWebDriver);
       expect(response.status()).toBe(200);
       await expect(registerPage.userProfileButton).toBeVisible();
     },
@@ -46,7 +46,7 @@ test.describe('register functionality', () => {
       expect(response.status()).not.toBe(200);
       await expect(registerPage.errorPanel.getByText('username is invalid')).toBeVisible();
       await expect(registerPage.errorPanel.getByText('email is invalid')).toBeVisible();
-      await expect(page).toHaveURL(`${baseUrl}/register`);
+      await expect(page).toHaveURL(`${baseUrlWebDriver}/register`);
     },
   );
 });
