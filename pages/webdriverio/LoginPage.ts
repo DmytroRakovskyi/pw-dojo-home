@@ -2,14 +2,14 @@ import { Page, Locator } from '@playwright/test';
 import { baseUrlWebDriver } from '../../utils/constants';
 
 export class LoginPage {
-  page: Page;
-  userNameInput: Locator;
-  emailInput: Locator;
-  passwordInput: Locator;
-  needAnAccount: Locator;
-  userProfileButton: Locator;
-  errorPanel: Locator;
-  signInButton: Locator;
+  readonly page: Page;
+  readonly userNameInput: Locator;
+  readonly emailInput: Locator;
+  readonly passwordInput: Locator;
+  readonly needAnAccount: Locator;
+  readonly userProfileButton: Locator;
+  readonly errorPanel: Locator;
+  readonly signInButton: Locator;
 
   constructor(page: Page) {
     this.page = page;

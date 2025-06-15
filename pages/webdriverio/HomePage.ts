@@ -1,12 +1,12 @@
 import { Page, Locator, test } from '@playwright/test';
 
 export class HomePage {
-  page: Page;
-  myFeedButton: Locator;
-  globalFeedButton: Locator;
-  tagList: Locator;
-  articlePreview: Locator;
-  articleFavorite: Locator;
+  readonly page: Page;
+  readonly myFeedButton: Locator;
+  readonly globalFeedButton: Locator;
+  readonly tagList: Locator;
+  readonly articlePreview: Locator;
+  readonly articleFavorite: Locator;
 
   constructor(page: Page) {
     this.page = page;

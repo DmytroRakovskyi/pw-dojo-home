@@ -1,14 +1,14 @@
 import { Locator, Page, expect } from '@playwright/test';
 import { baseUrlWebDriver } from '../../utils/constants';
 export class EditorPage {
-  page: Page;
-  articleTitle: Locator;
-  articleAbout: Locator;
-  articleTextArea: Locator;
-  articleFeedContent: Locator;
-  articleTextAreaContent: Locator;
-  userProfileButton: Locator;
-  publishButton: Locator;
+  readonly page: Page;
+  readonly articleTitle: Locator;
+  readonly articleAbout: Locator;
+  readonly articleTextArea: Locator;
+  readonly articleFeedContent: Locator;
+  readonly articleTextAreaContent: Locator;
+  readonly userProfileButton: Locator;
+  readonly publishButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
