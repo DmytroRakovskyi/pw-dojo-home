@@ -1,4 +1,4 @@
-import { expect, test, Locator } from '@playwright/test';
+import { expect, test, Locator } from "@playwright/test";
 
 /* page это фикстура которая создает браузер, контекст и тд
 Isolated Page instance, created for each test. Pages are isolated between tests due to fixtures.context isolation.  
@@ -14,30 +14,30 @@ await page.goto("https://playwright.dev/");
 
 
 */
-const baseUrl = 'https://playwright.dev';
+const baseUrl = "https://playwright.dev";
 
 test.beforeEach(async ({ page }) => {
   await page.goto(baseUrl);
 });
 
-test.describe('search functionality', () => {
+test.describe("search functionality", () => {
   test(
-    'AQA-12, search should be visible, clickable, fillable',
-    { tag: '@smoke-pw' },
+    "AQA-12, search should be visible, clickable, fillable",
+    { tag: "@smoke-pw" },
     async ({ page }) => {
-      const searchButton: Locator = page.locator('button.DocSearch');
-      const searchModal: Locator = page.locator('.DocSearch-Modal');
-      const searchInput: Locator = page.locator('input.DocSearch-Input');
+      const searchButton: Locator = page.locator("button.DocSearch");
+      const searchModal: Locator = page.locator(".DocSearch-Modal");
+      const searchInput: Locator = page.locator("input.DocSearch-Input");
 
       await expect(searchButton).toBeVisible();
-      await page.keyboard.press('Control+K');
+      await page.keyboard.press("Control+K");
       await expect(searchModal).toBeVisible();
-      await page.keyboard.press('Control+K');
+      await page.keyboard.press("Control+K");
       await expect(searchModal).toBeVisible({ visible: false });
       await searchButton.click();
       await expect(searchModal).toBeVisible();
-      await searchInput.fill('Peter');
-      await expect(searchInput).toHaveValue('Peter');
+      await searchInput.fill("Peter");
+      await expect(searchInput).toHaveValue("Peter");
       await searchInput.clear();
       await expect(searchInput).toBeEmpty();
     },

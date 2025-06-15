@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { Locator, Page, expect } from "@playwright/test";
 
 export class EditorPage {
   page: Page;
@@ -15,7 +15,7 @@ export class EditorPage {
     this.articleTitle = page.locator("input[placeholder*='Title']");
     this.articleAbout = page.locator("input[placeholder*='about']");
     this.articleTextArea = page.locator("textarea[placeholder*='your']");
-    this.articleFeedContent = page.locator('.article-preview');
+    this.articleFeedContent = page.locator(".article-preview");
     this.articleTextAreaContent = page.locator("[class*='v-show-content s']");
     this.userProfileButton = page.locator(`a[href*='user'].nav-link`);
     this.publishButton = page.locator('button[data-qa-id="editor-publish"]');

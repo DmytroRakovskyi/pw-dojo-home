@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator } from "@playwright/test";
 
 export class LoginPage {
   page: Page;
@@ -17,8 +17,8 @@ export class LoginPage {
     this.passwordInput = page.locator("input[placeholder*='Password']");
     this.userProfileButton = page.locator(`a[href*='user'].nav-link`);
     this.needAnAccount = page.locator("//a[contains(text(), 'Need')]");
-    this.errorPanel = page.locator('.error-messages');
-    this.signInButton = page.locator('button.btn');
+    this.errorPanel = page.locator(".error-messages");
+    this.signInButton = page.locator("button.btn");
   }
 
   async userLogin(userEmail: string, userPassword: string) {

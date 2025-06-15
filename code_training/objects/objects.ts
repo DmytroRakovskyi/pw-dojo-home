@@ -1,14 +1,14 @@
 const book = {
-  'title': 'Peace',
-  'author': 'Dmytro',
-  'pages': '1',
-  'is available': true,
+  title: "Peace",
+  author: "Dmytro",
+  pages: "1",
+  "is available": true,
 };
 
 console.log([book.author, book.title, book.pages]);
 
 // book.isAvailable = true; if js
-console.log([book.author, book.title, book.pages, book['is available']]);
+console.log([book.author, book.title, book.pages, book["is available"]]);
 
 function showKeyValue(obj) {
   for (const key in obj) {
@@ -20,30 +20,29 @@ showKeyValue(book);
 
 const complexObject = {
   profile: {
-    email: 'dad@gmail.com',
+    email: "dad@gmail.com",
     adress: null,
-    currencies: ['EUR', 'USD'],
+    currencies: ["EUR", "USD"],
   },
 };
 console.log(complexObject.profile.email);
 
 const checkProperty = (prop, obj) => {
   if (prop in obj) {
-    return 'there is a property';
+    return "there is a property";
   } else {
-    return 'there is no property';
+    return "there is no property";
   }
 };
 
-console.log(checkProperty('profile', complexObject));
-console.log(Object.keys(book).length)
-
+console.log(checkProperty("profile", complexObject));
+console.log(Object.keys(book).length);
 
 const settings1 = {
-  "enabledFlag": 'true',
+  enabledFlag: "true",
 };
 
-const settingsCopy = {...settings1};
+const settingsCopy = { ...settings1 };
 
 /**
  * Spread Method
@@ -57,6 +56,3 @@ let clone = JSON.parse(JSON.stringify(userDetails))
  * 
  * 
  */
-
-
-

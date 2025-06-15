@@ -1,1 +1,1 @@
-export const baseUrlWebDriver = 'https://demo.learnwebdriverio.com';
+export const baseUrlWebDriver = "https://demo.learnwebdriverio.com";

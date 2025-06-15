@@ -14,7 +14,7 @@
 //     accountType: string,
 //     pin: string,
 
-//   ) 
+//   )
 //   {
 //     this.accountHolder = accountHolder;
 //     this.accountId = accountId;
@@ -35,11 +35,9 @@
 //   }
 
 //   addMoney(moneyAmount:number){
-//     this.balance = this.balance + moneyAmount; 
+//     this.balance = this.balance + moneyAmount;
 //   }
 // }
-
-
 
 // const account = new BankAccount(1000, 'Dmytro', '21Dc', 'EUR', 'Premium');
 // console.log(account.getBalance(account.pin));
