@@ -37,25 +37,25 @@
 
 // movieControler('Mon 26', '19:30', 'red', 'Lila and Stitch')
 
-const date: string = "Mon 26";
-const time: string = "19:30";
-const theater: string = "blue";
-const movieTitle: string = "Lila and Stitch";
+const date: string = 'Mon 26';
+const time: string = '19:30';
+const theater: string = 'blue';
+const movieTitle: string = 'Lila and Stitch';
 
 function movieControlerNew(date, time, theater, movieTitle) {
-  if (date !== "Mon 26") {
-    return "denied";
+  if (date !== 'Mon 26') {
+    return 'denied';
   }
-  if (time !== "19:30") {
-    return "denied";
+  if (time !== '19:30') {
+    return 'denied';
   }
-  if (theater !== "blue" && theater !== "red") {
-    return "denied";
+  if (theater !== 'blue' && theater !== 'red') {
+    return 'denied';
   }
-  if (movieTitle !== "Lila and Stitch") {
-    return "denied";
+  if (movieTitle !== 'Lila and Stitch') {
+    return 'denied';
   }
-  return console.log("allowed");
+  return console.log('allowed');
 }
 
-movieControlerNew("Mon 26", "19:30", "red", "Lila and Stitch");
+movieControlerNew('Mon 26', '19:30', 'red', 'Lila and Stitch');

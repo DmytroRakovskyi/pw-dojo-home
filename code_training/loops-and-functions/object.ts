@@ -2,7 +2,7 @@ const student: {
   firstName: string;
   lastName: string;
   course: string;
-  ["fake location"]: string;
+  ['fake location']: string;
   age: number;
   adresses: Array<string>;
   sideEffect: {
@@ -11,12 +11,12 @@ const student: {
   };
   sayHi(): void;
 } = {
-  firstName: "name",
-  lastName: "lastName",
-  course: "QA DOJO",
+  firstName: 'name',
+  lastName: 'lastName',
+  course: 'QA DOJO',
   age: 19,
-  "fake location": "Poland",
-  adresses: ["Ukraine", "Kyiv", "Perova st"],
+  'fake location': 'Poland',
+  adresses: ['Ukraine', 'Kyiv', 'Perova st'],
   sideEffect: {
     first: [1, 2, 3, 4],
     second: {

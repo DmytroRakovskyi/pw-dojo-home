@@ -25,12 +25,12 @@ export const isEvenOrOdd = (param: number): string => {
 
 export function greetings(param: number): string {
   if (param < 0) {
-    return "Друже, ти з космосу? Час може бути лише позитивним числовим значенням";
+    return 'Друже, ти з космосу? Час може бути лише позитивним числовим значенням';
   } else if (param < 12) {
-    return "Доброго ранку!";
+    return 'Доброго ранку!';
   } else if (param >= 12 && param <= 18) {
-    return "Доброго дня!";
-  } else return "Доброго вечора!";
+    return 'Доброго дня!';
+  } else return 'Доброго вечора!';
 }
 // export const currentHour: number = new Date().getHours();
 
@@ -47,9 +47,9 @@ const grade: number = Math.trunc(Math.random() * 100);
 console.log(grade);
 export function gradeCheck(grade: number): string {
   if (grade >= 50 && grade <= 100) {
-    return "Тест складено";
+    return 'Тест складено';
   } else {
-    return "Тест не складено";
+    return 'Тест не складено';
   }
 }
 
@@ -66,9 +66,9 @@ export function gradeCheck(grade: number): string {
 */
 export const voteAge = (age: number = 0): string => {
   if (age >= 18 && age <= 101) {
-    return "Ви можете голосувати.";
+    return 'Ви можете голосувати.';
   } else {
-    return "Ви ще не можете голосувати.";
+    return 'Ви ще не можете голосувати.';
   }
 };
 // console.log(`Task 4 output: ${voteAge()}`);
@@ -84,11 +84,11 @@ export const voteAge = (age: number = 0): string => {
 
 const numberCompare = (num1: number, num2: number): string => {
   if (num1 === num2) {
-    return "Числа рівні";
+    return 'Числа рівні';
   } else if (num1 > num2) {
-    return "Перше число більше.";
+    return 'Перше число більше.';
   } else {
-    return "Друге число більше.";
+    return 'Друге число більше.';
   }
 };
 
@@ -105,17 +105,17 @@ const numberCompare = (num1: number, num2: number): string => {
 function trafficLight(color: string): string {
   color = color.toLowerCase();
 
-  if (color === "зелений") {
-    return "переходьте";
+  if (color === 'зелений') {
+    return 'переходьте';
   }
-  if (color === "жовтий") {
-    return "підготуйтеся";
+  if (color === 'жовтий') {
+    return 'підготуйтеся';
   }
-  if (color === "червоний") {
-    return "зачекайте";
+  if (color === 'червоний') {
+    return 'зачекайте';
   }
 
-  return "Невідомий колір, краще зачекати";
+  return 'Невідомий колір, краще зачекати';
 }
 
 // console.log(`Task 6 output: ${trafficLight('червоний')}`);
@@ -133,13 +133,13 @@ function trafficLight(color: string): string {
 
 const numberType = (num: number): string => {
   if (num > 0) {
-    return "Число додатнє.";
+    return 'Число додатнє.';
   } else if (num < 0) {
-    return "Число від’ємне.";
+    return 'Число від’ємне.';
   } else if (num === 0) {
-    return "Число дорівнює нулю.";
+    return 'Число дорівнює нулю.';
   } else {
-    return "Якась дікуха";
+    return 'Якась дікуха';
   }
 };
 
