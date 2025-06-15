@@ -50,5 +50,5 @@ test_old
 # code_training
 
 # Prettier 
-.prettierrc
-.prettierignore
+.prettierrc/
+.prettierignore/
