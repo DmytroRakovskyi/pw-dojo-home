@@ -14,7 +14,7 @@ test.describe('POM-0, main page', { tag: ['@smoke-wb', '@main'] }, () => {
   test.beforeEach(async ({ page }) => {
     let registerPage = new RegistrationPage(page);
     await goTo(page, baseUrlWebDriver, '/register');
-    registerPage.userRegistration(uniqueUser, userEmail, userPassword);
+    await registerPage.userRegistration(uniqueUser, userEmail, userPassword);
     await expect(page).toHaveURL(baseUrlWebDriver);
   });
 
