@@ -1,5 +1,4 @@
 import { expect, Locator, Page, test } from '@playwright/test';
-import { goTo } from '../../utils/navigation';
 import { baseUrlWebDriver } from '../../utils/constants';
 
 export class RegistrationPage {
@@ -23,6 +22,14 @@ export class RegistrationPage {
     this.errorPanel = page.locator('.error-messages');
   }
 
+  async goToRegisterPage() {
+    await this.page.goto(`${baseUrlWebDriver}/register`);
+  }
+
+  private async goToSettingsPage() {
+    await this.page.goto(`${baseUrlWebDriver}/settings`);
+  }
+
   async userRegistration(userName: string, userEmail: string, userPassword: string) {
     await this.userNameInput.fill(userName);
     await this.emailInput.fill(userEmail);
@@ -30,7 +37,7 @@ export class RegistrationPage {
     await this.signInButton.click();
   }
   async userLogout() {
-    await goTo(this.page, baseUrlWebDriver, '/settings');
+    await this.goToSettingsPage();
     await this.logOutButton.click();
     await expect(this.page).toHaveURL(`${baseUrlWebDriver}/`);
   }

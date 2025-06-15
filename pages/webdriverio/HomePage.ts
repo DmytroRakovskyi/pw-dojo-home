@@ -1,6 +1,6 @@
 import { Page, Locator, test } from '@playwright/test';
 
-export class MainPage {
+export class HomePage {
   page: Page;
   myFeedButton: Locator;
   globalFeedButton: Locator;
@@ -16,10 +16,10 @@ export class MainPage {
     this.articlePreview = page.locator('.article-preview');
     this.articleFavorite = page.locator('button[data-qa-type*="fav"]');
   }
-  async getByTagBefore(tagName: string) {
+  async getByTag(tagName: string) {
     return this.page.locator(`a[href="/tag/${tagName}"]`);
   }
-  async getByTagAfter(text: string) {
+  async getByList(text: string) {
     return this.page.locator(`//li[span[text()='${text}']]`);
   }
 

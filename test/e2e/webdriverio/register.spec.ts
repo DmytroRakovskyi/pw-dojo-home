@@ -1,6 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
 import { dataGenerator, invalidData } from '../../../utils/data-generator';
-import { goTo } from '../../../utils/navigation';
 import { baseUrlWebDriver } from '../../../utils/constants';
 import { RegistrationPage } from '../../../pages/webdriverio/RegisrationPage';
 
@@ -10,12 +9,12 @@ const responsePromise = (page: Page, response: string) => page.waitForResponse(r
 
 test.beforeEach(async ({ page }) => {
   const registerPage = new RegistrationPage(page);
-  await goTo(page, baseUrlWebDriver, '/register');
+  await registerPage.goToRegisterPage();
 });
 
-test.describe('register functionality', () => {
+test.describe('register functionality', { tag: ['@smoke-wb', '@registration-wb'] }, () => {
   test(
-    'AQA-13 valid user registration',
+    'WB-1 valid user registration',
     { tag: ['@smoke-wb', '@registration-wb'] },
     async ({ page }) => {
       const registerPage = new RegistrationPage(page);
@@ -33,7 +32,7 @@ test.describe('register functionality', () => {
   );
 
   test(
-    'AQA-14 invalid user registration attempt',
+    'WB-2 invalid user registration attempt',
     { tag: ['@smoke-wb', '@registration-wb'] },
     async ({ page }) => {
       const registerPage = new RegistrationPage(page);
@@ -42,7 +41,7 @@ test.describe('register functionality', () => {
         'https://conduit-api.learnwebdriverio.com/api/users',
       );
       await registerPage.userRegistration(invalidUser, invalidEmail, invalidPassword);
-      const response = await respPromise;
+      const response: any = await respPromise;
       expect(response.status()).not.toBe(200);
       await expect(registerPage.errorPanel.getByText('username is invalid')).toBeVisible();
       await expect(registerPage.errorPanel.getByText('email is invalid')).toBeVisible();

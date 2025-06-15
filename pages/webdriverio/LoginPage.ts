@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { baseUrlWebDriver } from '../../utils/constants';
 
 export class LoginPage {
   page: Page;
@@ -25,5 +26,9 @@ export class LoginPage {
     await this.emailInput.fill(userEmail);
     await this.passwordInput.fill(userPassword);
     await this.signInButton.click();
+  }
+
+  async goToLoginPage() {
+    await this.page.goto(`${baseUrlWebDriver}/login`);
   }
 }

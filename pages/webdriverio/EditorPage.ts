@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-
+import { baseUrlWebDriver } from '../../utils/constants';
 export class EditorPage {
   page: Page;
   articleTitle: Locator;
@@ -21,8 +21,8 @@ export class EditorPage {
     this.publishButton = page.locator('button[data-qa-id="editor-publish"]');
   }
 
-  async verifyArticleText(text: string) {
-    await expect(this.articleTextAreaContent).toContainText(text);
+  async goToEditorPage() {
+    await this.page.goto(`${baseUrlWebDriver}/editor`);
   }
 
   async fillArticle(title: string, about: string, text: string) {
@@ -33,5 +33,9 @@ export class EditorPage {
 
   async publishArticle() {
     await this.publishButton.click();
+  }
+
+  async verifyArticleText(text: string) {
+    await expect(this.articleTextAreaContent).toContainText(text);
   }
 }
