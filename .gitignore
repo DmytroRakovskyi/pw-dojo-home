@@ -50,5 +50,8 @@ test_old
 # code_training
 
 # Prettier 
-.prettierrc/
-.prettierignore/
+.prettierrc
+.prettierrc.json
+.prettierrc.js
+.prettierrc.yaml
+.prettierignore
