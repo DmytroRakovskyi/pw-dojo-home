@@ -7,9 +7,11 @@ export class HomePage {
   readonly tagList: Locator;
   readonly articlePreview: Locator;
   readonly articleFavorite: Locator;
+  readonly settingsButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.settingsButton = page.locator("a[href*='settings']");
     this.myFeedButton = page.locator("a[href*='my-feed']");
     this.globalFeedButton = page.locator("//a[contains(text(), 'Global Feed')]");
     this.tagList = page.locator('.sidebar .tag-list');

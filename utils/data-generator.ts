@@ -1,3 +1,6 @@
+import { faker } from '@faker-js/faker';
+import { UserData } from '../types/user';
+
 const dataGenerator = () => {
   const timestamp = Date.now();
   const randomNumber = Math.floor(Math.random() * 1000);
@@ -12,6 +15,11 @@ const invalidData = {
   invalidUser: 'user_',
   invalidEmail: '1234@i',
   invalidPassword: '1',
+};
+
+export const userData: UserData = {
+  username: faker.person.fullName(),
+  bio: faker.person.bio(),
 };
 
 export { dataGenerator, invalidData };
